@@ -21,12 +21,12 @@ def index():
     return render_template('login.html')
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['POST'])
 def login():
     salt = bcrypt.gensalt()
-    usuario = request.args.get('usuario')
+    usuario = request.form.get('usuario')  # Acessa o campo 'usuario' no corpo da solicitação
     session['username'] = usuario
-    senha = request.args.get('senha')
+    senha = request.form.get('senha')  # Acessa o campo 'senha' no corpo da solicitação
     hashed_password = bcrypt.hashpw(senha.encode('utf-8'), salt)
 
     consulta = "SELECT usuario, senha FROM funcionario WHERE usuario = %s"
@@ -57,6 +57,7 @@ def login():
             return render_template('login.html', mensagem=mensagem)
 
 
+
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     nome = session.get('username')
@@ -78,6 +79,9 @@ def pagecaduser():
 def pagecadproduct():
     return render_template('cadastrarproduto.html')
 
+@app.route('/pagealterdescription', methods=['GET', 'POST'])
+def pagealterdescription():
+    return render_template('alteradescricao.html')
 
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
@@ -179,6 +183,19 @@ def buscaproduto():
 
     return render_template('consultaprodutos.html', produto=resultado)
 
+@app.route('/selecionaproduto')
+def selecionaproduto():
+
+    produto = "%" + request.args.get('produto') + "%"
+    consulta = "SELECT id, descricao, setor, preco, codigodebarras FROM produtos WHERE descricao LIKE %s"
+ 
+    valores = (produto, )
+    cursor = mydb.cursor()
+    cursor.execute(consulta, valores)
+    resultado = cursor.fetchall()
+
+
+    return render_template('alteradescricao.html', produto=resultado)
 
 @app.route('/cadastrarusuario', methods=['GET', 'POST'])
 def cadastrarusuario():

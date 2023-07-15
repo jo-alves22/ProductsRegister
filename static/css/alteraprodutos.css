@@ -1,0 +1,60 @@
+/* Estilos gerais */
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f2f2f2;
+}
+
+/* Estilos do formulário */
+form {
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+	max-width: 1500px;
+	margin: 50px auto;
+}
+
+h1{
+    color: #0772d6;
+    text-align: center;
+}
+label, input {
+	display: block;
+	
+    color: #0772d6;
+}
+
+input[type="text"],
+input[type="password"] {
+	width: 100%;
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+	background-color: #0772d6;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+    width: 100%;
+	cursor: pointer;
+    margin-bottom: 20px;
+}
+
+input[type="submit"]:hover {
+	background-color: #032479;
+}
+
+a{
+    text-decoration: none;
+    align-items: flex-end;
+    color: #0772d6;
+    border: 1px solid #3ea8f9;
+    padding: 8px;
+}
+.cancelar{
+    text-align: right;
+    
+}
