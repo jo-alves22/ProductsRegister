@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/login.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <title>Cadastrar Produto - Supermercado PagueMais</title>
+  </head>
+  <body>
+    {% if mensagem %}
+    <div class="alert alert-danger" role="alert">{{ mensagem }}</div>
+    {% endif %}
+    <div class="container">
+      <form
+        method="POST"
+        action="http://localhost:5000/cadastrarproduto"
+        enctype="multipart/form-data"
+      >
+        <h1>Cadastrar Novo Produto</h1>
+        <label for="usuario">Descrição:</label>
+        <input type="text" id="descricao" name="descricao" />
+        <br />
+        <label for="senha">Setor:</label>
+        <input type="text" id="setor" name="setor" />
+        <br />
+        <label for="senha">Preço:</label>
+        <input type="text" id="preco" name="preco" />
+        <br />
+        <label for="senha">Código de Barras:</label>
+        <input type="text" id="codigo" name="codigo_barras" />
+        <br />
+        <label for="imaem">Imagem:</label>
+        <input type="file" id="imagem" name="imagem" />
+        <br />
+        <input type="submit" value="Cadastrar" />
+        <div class="cancelar">
+          <a href="{{ url_for('home') }}">Cancelar</a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

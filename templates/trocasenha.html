@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Alteração de Senha</title>
+</head>
+<body>
+    {% if mensagem %}
+        <div class="alert alert-danger" role="alert">
+            {{ mensagem }}
+        </div>
+    {% endif %}
+    <form method="GET" action="http://localhost:5000/changepassword">
+        <h1>Alteração de Senha</h1>
+        <label for="usuario">Seu usuário:</label>
+        <input type="text" id="usuario" name="usuario">
+        <br>
+        <label for="senha">Senha atual:</label>
+        <input type="password" id="senha" name="senha">
+        <br>
+        <label for="novasenha">Nova senha:</label>
+        <input type="password" id="novasenha" name="novasenha">
+        <br>
+        <input type="submit" value="Alterar">
+        <div class="novo">
+            <a href="http://localhost:5000/cancelatrocasenha">Cancelar</a>
+        </div>
+        
+    </form>
+</body>
+</html>
